@@ -1,5 +1,4 @@
 """
-Created on Thu Apr 1 12:31:49 2021
 
 @author: Jorge Iván Ramirez Tamayo
 
