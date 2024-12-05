@@ -204,7 +204,8 @@ def DHIME_Download(path,variable,param,departamento,code,date_ini,date_fin):
     driver.execute_script("arguments[0].click();", dropdown)
     option = WebDriverWait(driver, TimeWait).until(EC.element_to_be_clickable((By.XPATH, f"//ul[@aria-hidden='false']//li[text()='{option_to_select}']")))
     driver.execute_script("arguments[0].click();", option)
-
+    
+    time.sleep(2)
     button = WebDriverWait(driver, TimeWait).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="first"]/div[3]/div')))
     driver.execute_script("arguments[0].click();", button)
 
@@ -212,7 +213,8 @@ def DHIME_Download(path,variable,param,departamento,code,date_ini,date_fin):
     input_box = WebDriverWait(driver, TimeWait).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="search-codigo"]')))
     input_box.clear()
     input_box.send_keys(Code)
-
+    
+    time.sleep(2)
     checkbox = WebDriverWait(driver, TimeWait).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="checkMetaData8"]')))
     if not checkbox.is_selected():
         checkbox.click()
@@ -226,7 +228,8 @@ def DHIME_Download(path,variable,param,departamento,code,date_ini,date_fin):
     date_box = WebDriverWait(driver, TimeWait).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="datepicker1"]')))
     date_box.clear()
     date_box.send_keys(date_input)
-
+    
+    time.sleep(2)
     button = WebDriverWait(driver, TimeWait).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="first"]/div[6]/div[1]')))
     button.click()
 
