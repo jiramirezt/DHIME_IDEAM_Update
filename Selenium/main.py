@@ -267,7 +267,7 @@ def DHIME_Download(path,variable,param,departamento,code,date_ini,date_fin):
 
 while True:
     try:
-        DHIME_Download(path = "C:/Users/jorgeramirez/Desktop/Selenium",
+        DHIME_Download(path = "C:/Users/jorge/Desktop/Selenium",
                        variable = "Precipitación",
                        param = 'Día pluviométrico (convencional)',
                        departamento = "Antioquia",
