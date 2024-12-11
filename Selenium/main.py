@@ -281,7 +281,7 @@ def DHIME_Download(path,variable,param,departamento,code,date_ini,date_fin):
     filtered_df = filtered_df.reset_index(drop=True)
     var_name = filtered_df['Code'][0]
     
-    os.rename(str(code)+".xlsx", var_name+"_"+ code +"_"+date_ini.replace('/','')+"_"+date_fin.replace('/','')+".xlsx")
+    os.rename(Path+'/'+str(code)+".xlsx",Path +'/'+ var_name+"_"+ code +"_"+date_ini.replace('/','')+"_"+date_fin.replace('/','')+".xlsx")
     
 
 
