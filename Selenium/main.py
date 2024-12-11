@@ -207,16 +207,36 @@ def DHIME_Download(path,variable,param,departamento,code,date_ini,date_fin):
     time.sleep(2)
     button = WebDriverWait(driver, TimeWait).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="first"]/div[3]/div')))
     driver.execute_script("arguments[0].click();", button)
-
-    Code = code
-    input_box = WebDriverWait(driver, TimeWait).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="search-codigo"]')))
-    input_box.clear()
-    input_box.send_keys(Code)
     
     time.sleep(2)
-    checkbox = WebDriverWait(driver, TimeWait).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="checkMetaData8"]')))
-    if not checkbox.is_selected():
-        checkbox.click()
+    table_xpath = '//*[@id="DatosBuscarMetaData"]'
+    search_code = code  # Replace with the code you are searching for
+
+    # Locate the table
+    table = driver.find_element(By.XPATH, table_xpath)
+
+    # Find all rows in the table (excluding the header row if present)
+    rows = table.find_elements(By.XPATH, './/tr')
+
+    # Iterate through the rows to find the desired code
+    for row in rows:
+        # Locate the second column in the current row
+        second_column = row.find_element(By.XPATH, './td[2]').text.strip()
+
+        # Check if the code matches
+        if second_column == search_code:
+            # Locate the checkbox in the first column
+            checkbox = row.find_element(By.XPATH, './td[1]//input[@type="checkbox"]')
+            
+            # Click the checkbox if it is not already selected
+            if not checkbox.is_selected():
+                checkbox.click()
+                print(f"Checkbox for code '{search_code}' has been clicked.")
+            else:
+                print(f"Checkbox for code '{search_code}' was already selected.")
+            break
+    else:
+        print(f"Code '{search_code}' not found in the table.")
 
     date_input = date_ini
     date_box = WebDriverWait(driver, TimeWait).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="datepicker"]')))
